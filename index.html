@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Your Portfolio</title>
+    <!-- CSS Link -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <!-- Font Awesome for icons -->
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 
@@ -26,13 +27,21 @@
             <div class="bar"></div>
             <div class="bar"></div>
         </div>
+        <!-- Add this right after the nav-links in the navbar -->
+        <div class="theme-switch">
+            <input type="checkbox" id="theme-toggle">
+            <label for="theme-toggle" class="theme-label">
+                <i class="fas fa-sun"></i>
+                <i class="fas fa-moon"></i>
+            </label>
+        </div>
     </nav>
 
     <!-- Home Section -->
     <section id="home">
         <div class="hero">
-            <h1>Hi, I'm <span class="highlight">Your Name</span></h1>
-            <h2>Web Developer</h2>
+            <h1>Hi, I'm <span class="highlight">Stephen Omotto</span></h1>
+            <h2>Apprentice Software developer</h2>
             <p>I create beautiful and functional websites</p>
             <a href="#projects" class="cta-button">View My Work</a>
         </div>
@@ -43,20 +52,21 @@
         <h2 class="section-title">About Me</h2>
         <div class="about-content">
             <div class="about-text">
-                <p>Your introduction here. Describe your passion for web development and your journey.</p>
+                <p>I am a passionate web developer with experience in creating responsive and user-friendly websites. I
+                    focus on writing clean, elegant, and efficient code.</p>
                 <div class="personal-info">
                     <div class="info-item">
                         <i class="fas fa-envelope"></i>
-                        <span>your.email@example.com</span>
+                        <span>stephenonyango4783@gmail.com</span>
                     </div>
                     <div class="info-item">
                         <i class="fas fa-map-marker-alt"></i>
-                        <span>Your Location</span>
+                        <span>Kisumu, Kenya</span>
                     </div>
                 </div>
             </div>
             <div class="about-image">
-                <img src="your-image.jpg" alt="Your Name">
+                <img src="assets/images/profile.jpg" alt="Your Name" class="profile-img">
             </div>
         </div>
     </section>
@@ -71,18 +81,26 @@
                     <div class="skill">
                         <i class="fab fa-html5"></i>
                         <span>HTML5</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 90%"></div>
+                        </div>
                     </div>
                     <div class="skill">
                         <i class="fab fa-css3-alt"></i>
                         <span>CSS3</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 85%"></div>
+                        </div>
                     </div>
                     <div class="skill">
                         <i class="fab fa-js"></i>
                         <span>JavaScript</span>
+                        <div class="skill-bar">
+                            <div class="skill-level" style="width: 80%"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <!-- Add more skill categories as needed -->
         </div>
     </section>
 
@@ -90,10 +108,10 @@
     <section id="projects">
         <h2 class="section-title">My Projects</h2>
         <div class="projects-grid">
-            <!-- Project Card 1 -->
+            <!-- Project 1 -->
             <div class="project-card">
                 <div class="project-image">
-                    <img src="project1.jpg" alt="Project 1">
+                    <img src="assets/images/projects/project1.jpg" alt="Project 1">
                 </div>
                 <div class="project-info">
                     <h3>Project Name</h3>
@@ -104,7 +122,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Add more project cards -->
         </div>
     </section>
 
@@ -115,15 +132,15 @@
             <div class="contact-info">
                 <div class="contact-item">
                     <i class="fas fa-phone"></i>
-                    <span>+1234567890</span>
+                    <span>+254 746955735</span>
                 </div>
                 <div class="contact-item">
                     <i class="fas fa-envelope"></i>
-                    <span>your.email@example.com</span>
+                    <span>stephenonyango4783@gmail.com</span>
                 </div>
                 <div class="social-links">
-                    <a href="#"><i class="fab fa-github"></i></a>
-                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/somotto"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/stephen-omotto-35150519a/"><i class="fab fa-linkedin"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
                 </div>
             </div>
@@ -147,6 +164,7 @@
         <p>&copy; 2024 Your Name. All rights reserved.</p>
     </footer>
 
+    <!-- JavaScript -->
     <script src="assets/js/script.js"></script>
 </body>
 
