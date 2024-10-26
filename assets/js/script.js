@@ -1,3 +1,41 @@
+// Theme Toggle Functionality
+const themeToggle = document.getElementById('theme-toggle');
+const htmlElement = document.documentElement;
+
+// Check for saved theme preference
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+    htmlElement.setAttribute('data-theme', savedTheme);
+    themeToggle.checked = savedTheme === 'dark';
+} else {
+    // Check system preference
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    htmlElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+    themeToggle.checked = prefersDark;
+}
+
+// Theme toggle event listener
+themeToggle.addEventListener('change', function () {
+    const newTheme = this.checked ? 'dark' : 'light';
+    htmlElement.setAttribute('data-theme', newTheme);
+    localStorage.setItem('theme', newTheme);
+
+    // Animate transition
+    document.body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
+    setTimeout(() => {
+        document.body.style.transition = '';
+    }, 300);
+});
+
+// Watch for system theme changes
+window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function (e) {
+    if (!localStorage.getItem('theme')) {
+        const newTheme = e.matches ? 'dark' : 'light';
+        htmlElement.setAttribute('data-theme', newTheme);
+        themeToggle.checked = e.matches;
+    }
+});
+
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
