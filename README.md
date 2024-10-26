@@ -1,1 +1,1 @@
-# Stephen-Omotto.github.io
+Omotto.github.io
