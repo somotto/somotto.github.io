@@ -483,9 +483,6 @@ textarea {
     background-color: var(--light-bg);
 }
 
-.contact-info {
-    background-color: var(--light-bg);
-}
 
 /* Dark mode specific adjustments */
 [data-theme="dark"] .project-card {
@@ -501,40 +498,11 @@ textarea {
     color: #9ca3af;
 }
 
-/* Contact Section */
 #contact {
-    text-align: center;
-}
-
-.contact-container {
-    max-width: 600px;
-    margin: 0 auto;
     padding: 2rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-}
-
-.contact-info {
-    padding: 1.5rem;
-    background: var(--light-bg);
-    border-radius: 10px;
-    box-shadow: 0 4px 8px var(--shadow-color);
-    width: 100%;
-}
-
-.contact-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1rem;
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-}
-
-.contact-item i {
-    color: var(--secondary-color);
+    background-color: var(--primary-color-light);
+    color: var(--text-color);
+    text-align: center;
 }
 
 .social-links {
@@ -598,12 +566,7 @@ body.dark-mode {
         padding: 0.7rem 1.2rem;
         font-size: 0.9rem;
     }
-    .contact-container {
-        padding: 1rem;
-    }
-    .contact-info {
-        padding: 1rem;
-    }
+   
     #navbar {
         flex-direction: column;
         align-items: flex-start;
@@ -649,10 +612,6 @@ body.dark-mode {
     }
 
     .about-content {
-        grid-template-columns: 1fr;
-    }
-
-    .contact-container {
         grid-template-columns: 1fr;
     }
 }
