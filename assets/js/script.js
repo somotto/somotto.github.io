@@ -46,6 +46,24 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+document.addEventListener("DOMContentLoaded", () => {
+    const characters = document.querySelectorAll(".char");
+
+    characters.forEach((char, index) => {
+        char.style.animationDelay = `${index * 0.1}s`; // Delay each letter
+    });
+
+    // Ensure the text remains visible after animation
+    setTimeout(() => {
+        characters.forEach((char) => {
+            char.style.animation = "none"; // Remove animation to keep final state
+            char.style.opacity = "1"; // Ensure text stays visible
+            char.style.transform = "translateX(0)"; // Reset transform
+        });
+    }, characters.length * 100 + 500); // Total animation duration + buffer
+});
+
+
 // Mobile menu toggle
 const hamburger = document.querySelector('.hamburger');
 const navLinks = document.querySelector('.nav-links');
