@@ -55,9 +55,10 @@ body {
     justify-content: space-between;
     align-items: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    z-index: 1000;
+    z-index: 100;
     transition: all 0.3s ease;
     background-color: var(--nav-bg);
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .logo {
@@ -96,70 +97,158 @@ body {
     transition: all 0.3s ease;
 }
 
+
+/* Navbar Background for Light Mode */
+.light-mode #navbar {
+    background-color: #ffffff; /* White background */
+    color: #000000; /* Black text */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Navbar Background for Dark Mode */
+.dark-mode #navbar {
+    background-color: #333333; /* Dark background */
+    color: #ffffff; /* White text */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* Link Styles */
+#navbar .nav-links a {
+    color: inherit; /* Inherits color based on the mode */
+    text-decoration: none;
+    font-weight: 500;
+    margin: 0 1rem;
+    transition: color 0.3s ease;
+}
+
+/* Link Hover Effect */
+#navbar .nav-links a:hover {
+    color: #f39c12; /* Highlight color on hover */
+}
+
+/* Active Link Styles */
+#navbar .nav-links a.active {
+    border-bottom: 2px solid #f39c12;
+}
+
 /* Home Section */
 #home {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    background: linear-gradient(135deg, #f4f4f4, #e0e0e0);
+    padding: 100px 20px;
     text-align: center;
-    padding: 0 1rem;
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('../images/background.jpg');
-    background-size: cover;
-    background-position: center;
-    color: var(--white);
 }
 
-
-.hero {
-    max-width: 600px;
-    padding: 2rem;
-    background: rgba(0, 0, 0, 0.6);
-    border-radius: 10px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+#home .hero {
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0; /* Start hidden for animation */
+    transform: translateY(20px); /* Initial position for animation */
+    animation: fadeInUp 1.5s ease-out forwards; /* Add animation */
 }
 
-.hero h1 {
-    font-size: 3rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
-    line-height: 1.2;
+#home h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    color: #333;
+    animation: fadeIn 1s ease-out forwards;
+    animation-delay: 0.5s; /* Delay to stagger animations */
 }
 
-.hero h2 {
+#home h1 .highlight {
+    color: #ff5722;
+}
+
+#home h2 {
     font-size: 1.8rem;
-    font-weight: 500;
-    color: var(--secondary-color);
-    margin-bottom: 1.5rem;
+    color: #1823bb;
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease-out forwards;
+    animation-delay: 0.7s; /* Staggered animation delay */
 }
 
-.hero p {
-    font-size: 1.1rem;
-    color: var(--light-gray);
-    margin-bottom: 2rem;
-    line-height: 1.5;
+#home .tagline {
+    font-size: 1.2rem;
+    color: #1e4bac;
+    margin-bottom: 30px;
+    animation: fadeIn 1s ease-out forwards;
+    animation-delay: 0.9s; /* Staggered animation delay */
 }
 
-.highlight {
-    color: var(--secondary-color);
+#home .skills-summary {
+    margin-bottom: 30px;
 }
 
-.cta-button {
+#home .cta-button {
     display: inline-block;
-    padding: 0.8rem 1.5rem;
-    background: var(--secondary-color);
-    color: var(--white);
-    font-weight: 600;
+    padding: 10px 20px;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
     text-decoration: none;
-    border-radius: 50px;
-    margin-top: 1rem;
-    transition: background 0.3s ease, transform 0.3s ease;
+    animation: pulse 1.5s infinite;
+    animation-delay: 1.2s; /* Staggered animation delay */
 }
 
-.cta-button:hover {
-    background: #2980b9;
-    transform: translateY(-3px);
+#home .cta-button:hover {
+    background-color: #0056b3;
 }
+/* Base Styling */
+.char {
+    display: inline-block;
+    opacity: 0;
+    transform: translateX(-20px); /* Start slightly off-screen */
+    animation: runIn 0.5s ease-out forwards;
+}
+
+/* Highlighted Characters */
+.char.highlight {
+    color: #ff5722;
+}
+
+/* Keyframe Animations */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+/* Keyframe Animations */
+@keyframes runIn {
+    0% {
+        opacity: 0;
+        transform: translateX(-20px); /* Move letters in from left */
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0); /* Stop moving */
+    }
+}
+
 
 /* Section Common Styles */
 section {
@@ -186,12 +275,33 @@ section {
     padding: 2rem;
 }
 
+/* Ensure the image blends with the background */
 .profile-img {
-    width: 100%;
-    max-width: 400px;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 50%; /* Make the image circular for a better aesthetic */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for contrast */
+    transition: background-color 0.5s ease, filter 0.5s ease;
 }
+
+/* Light Mode Styles */
+.light-mode .about-image {
+    background-color: #deb887; /* Light background for light mode */
+    transition: background-color 0.5s ease;
+}
+
+.light-mode .profile-img {
+    filter: brightness(1); /* Ensure image appears normal in light mode */
+}
+
+/* Dark Mode Styles */
+.dark-mode .about-image {
+    background-color: #2b2b2b; /* Dark background for dark mode */
+    transition: background-color 0.5s ease;
+}
+
+.dark-mode .profile-img {
+    filter: brightness(0.8); /* Slightly dim the image for dark mode harmony */
+}
+
 
 /* Skills Section */
 .skills-container {
@@ -480,8 +590,14 @@ footer {
     .contact-info {
         padding: 1rem;
     }
+    #navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 1rem;
+    }
     .nav-links {
-        display: none;
+        display: flex;
+        flex-direction: column;
         position: absolute;
         top: 100%;
         left: 0;
@@ -489,6 +605,11 @@ footer {
         background: var(--white);
         padding: 1rem;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+
+    }
+    .nav-links a {
+        padding: 0.5rem 0;
+        width: 100%;
     }
 
     .nav-links.active {
