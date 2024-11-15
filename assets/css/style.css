@@ -561,13 +561,27 @@ textarea {
     font-size: 1rem;
 }
 
-/* Footer */
+/* Footer Styles */
 footer {
-    background: var(--primary-color);
-    color: var(--white);
+    background-color: var(--footer-bg); /* Dynamic background */
+    color: var(--footer-text); /* Dynamic text color */
     text-align: center;
     padding: 2rem;
+    transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
 }
+
+/* Light Mode Variables */
+body.light-mode {
+    --footer-bg: #f0f0f0; /* Light gray */
+    --footer-text: #333333; /* Dark text */
+}
+
+/* Dark Mode Variables */
+body.dark-mode {
+    --footer-bg: #333333; /* Dark gray */
+    --footer-text: #ffffff; /* Light text */
+}
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
