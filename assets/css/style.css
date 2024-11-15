@@ -482,6 +482,79 @@ textarea {
 .skill-bar {
     background-color: var(--light-bg);
 }
+/* Blog Section */
+#blog {
+    padding: 4rem 2rem;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+#blog .section-title {
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+.blog-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.blog-post {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.blog-post:hover {
+    transform: translateY(-5px);
+}
+
+.blog-post img {
+    width: 100%;
+    height: auto;
+}
+
+.blog-content {
+    padding: 1.5rem;
+}
+
+.blog-content h3 {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    color: #222;
+}
+
+.blog-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.read-more {
+    display: inline-block;
+    font-size: 1rem;
+    color: #fff;
+    background-color: #0073e6;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.read-more:hover {
+    background-color: #005bb5;
+}
 
 
 /* Dark mode specific adjustments */
@@ -613,5 +686,27 @@ body.dark-mode {
 
     .about-content {
         grid-template-columns: 1fr;
+    }
+    .blog-container {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    .blog-post {
+        flex-direction: row;
+        max-width: 100%;
+        width: 80%;
+    }
+
+    .blog-content {
+        padding: 2rem;
+    }
+
+    .blog-content h3 {
+        font-size: 1.75rem;
+    }
+
+    .blog-content p {
+        font-size: 1.1rem;
     }
 }
