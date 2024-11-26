@@ -47,6 +47,17 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 document.addEventListener("DOMContentLoaded", () => {
+    const toggleModeButton = document.querySelector("#toggle-mode"); // Replace with your toggle button's ID
+    const body = document.body;
+
+    toggleModeButton.addEventListener("click", () => {
+        body.classList.toggle("dark-mode");
+        body.classList.toggle("light-mode");
+    });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
     const characters = document.querySelectorAll(".char");
 
     characters.forEach((char, index) => {
