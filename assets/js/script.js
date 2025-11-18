@@ -6,25 +6,18 @@ const htmlElement = document.documentElement;
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme) {
     htmlElement.setAttribute('data-theme', savedTheme);
-    themeToggle.checked = savedTheme === 'dark';
+    themeToggle.checked = savedTheme === 'light';
 } else {
-    // Check system preference
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     htmlElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
-    themeToggle.checked = prefersDark;
+    themeToggle.checked = prefersDark === false;
 }
 
 // Theme toggle event listener
 themeToggle.addEventListener('change', function () {
-    const newTheme = this.checked ? 'dark' : 'light';
+    const newTheme = this.checked ? 'light' : 'dark';
     htmlElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
-
-    // Animate transition
-    document.body.style.transition = 'background-color 0.3s ease, color 0.3s ease';
-    setTimeout(() => {
-        document.body.style.transition = '';
-    }, 300);
 });
 
 // Watch for system theme changes
@@ -32,7 +25,7 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', fun
     if (!localStorage.getItem('theme')) {
         const newTheme = e.matches ? 'dark' : 'light';
         htmlElement.setAttribute('data-theme', newTheme);
-        themeToggle.checked = e.matches;
+        themeToggle.checked = e.matches === false;
     }
 });
 
@@ -40,40 +33,24 @@ window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', fun
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth'
+            });
+            navLinks.classList.remove('active');
+            hamburger.classList.remove('active');
+        }
     });
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-    const toggleModeButton = document.querySelector("#toggle-mode"); // Replace with your toggle button's ID
-    const body = document.body;
-
-    toggleModeButton.addEventListener("click", () => {
-        body.classList.toggle("dark-mode");
-        body.classList.toggle("light-mode");
-    });
-});
-
-
+// Character animation for hero heading
 document.addEventListener("DOMContentLoaded", () => {
     const characters = document.querySelectorAll(".char");
-
     characters.forEach((char, index) => {
-        char.style.animationDelay = `${index * 0.1}s`; // Delay each letter
+        char.style.animationDelay = `${index * 0.05}s`;
     });
-
-    // Ensure the text remains visible after animation
-    setTimeout(() => {
-        characters.forEach((char) => {
-            char.style.animation = "none"; // Remove animation to keep final state
-            char.style.opacity = "1"; // Ensure text stays visible
-            char.style.transform = "translateX(0)"; // Reset transform
-        });
-    }, characters.length * 100 + 500); // Total animation duration + buffer
 });
-
 
 // Mobile menu toggle
 const hamburger = document.querySelector('.hamburger');
@@ -89,10 +66,10 @@ window.addEventListener('scroll', () => {
     const navbar = document.querySelector('#navbar');
     if (window.scrollY > 50) {
         navbar.style.background = '#fff';
-        navbar.style.boxShadow = '0 2px 5px rgba(0,0,0,0.1)';
+        navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)';
     } else {
         navbar.style.background = 'transparent';
-        navbar.style.boxShadow = 'none';
+        navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)';
     }
 });
 
@@ -138,17 +115,19 @@ filterButtons.forEach(button => {
 
 // Animate sections on scroll
 const observerOptions = {
-    threshold: 0.2
+    threshold: 0.2,
+    rootMargin: '0px 0px -100px 0px'
 };
 
 const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('animate');
+            entry.target.style.opacity = '1';
         }
     });
 }, observerOptions);
 
 document.querySelectorAll('section').forEach(section => {
+    section.style.opacity = '1';
     observer.observe(section);
 });
