@@ -309,12 +309,15 @@ body {
 
 /* Email Container Styling */
 .email-container {
-    /* Added container styling for email */
-    padding: 0.5rem 1rem;
+    padding: 0.6rem 1rem;
     background: rgba(6, 182, 212, 0.1);
     border: 1px solid var(--accent-cyan);
     border-radius: 6px;
     display: inline-block;
+    word-wrap: break-word;
+    word-break: break-word;
+    max-width: 100%;
+    overflow-wrap: break-word;
 }
 
 .email-container a {
@@ -322,9 +325,34 @@ body {
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s ease;
+    display: inline-block;
 }
 
 .email-container a:hover {
+    color: var(--accent-blue);
+}
+
+/* Added styling for email card container to ensure proper text wrapping */
+.email-card-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    word-break: break-word;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.email-card-container a {
+    color: var(--accent-cyan);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+    word-break: break-word;
+    display: block;
+    text-align: center;
+}
+
+.email-card-container a:hover {
     color: var(--accent-blue);
 }
 
@@ -440,6 +468,7 @@ section {
     align-items: center;
     gap: 1rem;
     color: #cbd5e1;
+    flex-wrap: wrap;
 }
 
 .info-item i {
@@ -465,8 +494,7 @@ section {
 }
 
 .profile-img {
-    width: 300px;
-    height: 300px;
+    width: 568px;
     border-radius: 12px;
     border: 2px solid var(--accent-cyan);
     box-shadow: 0 20px 40px rgba(6, 182, 212, 0.2);
@@ -886,6 +914,16 @@ footer {
 
     .specialization-grid {
         grid-template-columns: 1fr;
+    }
+
+    .email-container {
+        max-width: 100%;
+        padding: 0.5rem 0.8rem;
+        font-size: 0.9rem;
+    }
+
+    .email-container a {
+        word-break: break-word;
     }
 }
 
