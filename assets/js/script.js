@@ -18,6 +18,9 @@ themeToggle.addEventListener('change', function () {
     const newTheme = this.checked ? 'light' : 'dark';
     htmlElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
+    
+    // Trigger scroll event to update navbar styling
+    window.dispatchEvent(new Event('scroll'));
 });
 
 // Watch for system theme changes
@@ -61,15 +64,26 @@ hamburger.addEventListener('click', () => {
     hamburger.classList.toggle('active');
 });
 
-// Navbar scroll effect
+// Navbar scroll effect with theme-aware styling
 window.addEventListener('scroll', () => {
     const navbar = document.querySelector('#navbar');
+    const theme = document.documentElement.getAttribute('data-theme') || 'dark';
+    
     if (window.scrollY > 50) {
-        navbar.style.background = '#fff';
-        navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)';
+        if (theme === 'light') {
+            navbar.style.background = 'rgba(248, 250, 252, 0.98)';
+            navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.1)';
+        } else {
+            navbar.style.background = 'rgba(15, 23, 42, 0.98)';
+            navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
+        }
     } else {
-        navbar.style.background = 'transparent';
-        navbar.style.boxShadow = '0 4px 20px rgba(0,0,0,0.3)';
+        if (theme === 'light') {
+            navbar.style.background = 'rgba(248, 250, 252, 0.95)';
+        } else {
+            navbar.style.background = 'rgba(15, 23, 42, 0.95)';
+        }
+        navbar.style.boxShadow = '0 4px 20px rgba(0, 0, 0, 0.3)';
     }
 });
 
